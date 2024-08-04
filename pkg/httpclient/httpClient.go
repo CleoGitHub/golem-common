@@ -6,8 +6,8 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/cleoGitHub/golem/pkg/merror"
-	"github.com/cleoGitHub/golem/pkg/stringtool"
+	"github.com/cleoGitHub/golem-common/pkg/merror"
+	"github.com/cleoGitHub/golem-common/pkg/stringtool"
 )
 
 type HttpClient struct {
