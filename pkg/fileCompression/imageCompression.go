@@ -8,6 +8,8 @@ import (
 	_ "image/jpeg"
 	_ "image/png"
 
+	_ "golang.org/x/image/webp"
+
 	"github.com/cleogithub/golem-common/pkg/merror"
 	"github.com/disintegration/imaging"
 )
@@ -37,23 +39,21 @@ func (c *ImageCompressor) CreateLarge(buffer []byte) (image.Image, error) {
 }
 
 func processImage(buffer []byte, width int) (image.Image, error) {
-	// return webp.Decode(bytes.NewBuffer(buffer))
 	img, _, err := image.Decode(bytes.NewBuffer(buffer))
 	if err != nil {
 		return nil, merror.Stack(err)
 	}
 
-	res := imaging.Resize(img, width, 0, imaging.Box)
-	if err != nil {
-		return nil, merror.Stack(err)
+	var res *image.NRGBA
+	if width == 0 {
+		res = imaging.Clone(img)
+	} else {
+		res = imaging.Resize(img, width, 0, imaging.Lanczos)
 	}
 
 	if paletted, ok := img.(*image.Paletted); ok {
 		res := image.NewPaletted(res.Bounds(), paletted.Palette)
 		draw.Src.Draw(res, res.Bounds(), res, res.Bounds().Min)
-		if err != nil {
-			return nil, merror.Stack(err)
-		}
 	}
 
 	return res, err

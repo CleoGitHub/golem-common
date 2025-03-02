@@ -10,6 +10,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/segmentio/go-camelcase v0.0.0-20160726192923-7085f1e3c734
 	github.com/segmentio/go-snakecase v1.2.0
+	golang.org/x/image v0.0.0-20191009234506-e7c1f5e7dbb8
 	gorm.io/gorm v1.25.11
 )
 
@@ -40,7 +41,6 @@ require (
 	go.opentelemetry.io/otel/metric v1.24.0 // indirect
 	go.opentelemetry.io/otel/trace v1.24.0 // indirect
 	golang.org/x/crypto v0.24.0 // indirect
-	golang.org/x/image v0.0.0-20191009234506-e7c1f5e7dbb8 // indirect
 	golang.org/x/net v0.26.0 // indirect
 	golang.org/x/oauth2 v0.21.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
